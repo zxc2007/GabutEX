@@ -20,7 +20,7 @@ GabutEX v1""")
 
 def main():
 	try:
-		parse = argparse.ArgumentParser(description='WordPress Killer V1')
+		parse = argparse.ArgumentParser(description='GabutEX V1')
 		parse.add_argument("--list", help="List website target", required=True)
 		peler = parse.parse_args()
 		try:
