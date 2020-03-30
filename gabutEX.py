@@ -11,11 +11,6 @@ from concurrent.futures import ThreadPoolExecutor
 from __future__ import print_function
 from galer.module import check_cms
 
-
-headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0'}
-month = time.strftime("%m")
-years = time.strftime("%Y")
-
 def banner():
 	print("""_  _ ____ _  _ ___ ____ ____ ____ _ ___ 
 |\/| |__|  \/   |  |___ |__/ |  | |  |  
