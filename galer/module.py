@@ -8,9 +8,6 @@
 import time,json
 import requests as req
 from bs4 import BeautifulSoup as peler
-from galer.wpbrute import go_brute
-from galer.pretashop import go_exploit
-from galer.wpexploit import wpexploit
 from urlparse import urlparse
 
 def check_array(arr):
@@ -35,32 +32,6 @@ def formparse(url):
 	for item in getform:
 		name = item.next_sibling.strip()
 		return name
-
-def check_cms(url):
-	try:
-#		uuri = url.split("//")[-1].split("/")[0].split('?')[0]
-		http = req.get(url+"/xmlrpc.php",headers=headers)
-		if 'XML-RPC' in http.text:
-			print(colored("{} WORDPRESS".format(url),'yellow'))
-			exploit_wp(url)
-		else:
-			print(colored("{} NOT WORDPRESS".format(url),'yellow'))
-			exploit_other(url)
-	except:
-		print(colored("Unknow error check cms.",'red'))
-
-def exploit(url):
-	try:
-		go_brute(url)
-		wpexploit(url)
-	except:
-		print(colored("Seems we got error in function exploit",'red'))
-
-def exploit_other(url):
-	try:
-		go_exploit(url)
-	except:
-		print(colored("Seems we got error in function exploit",'red'))
 
 def get_domain(url, Remove_http=True):
 	url = urlparse(url)
