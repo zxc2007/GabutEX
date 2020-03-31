@@ -2,4 +2,4 @@ requests
 termcolor
 futures
 bs4
-urllib4
+urllib3
