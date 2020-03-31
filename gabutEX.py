@@ -23,6 +23,7 @@ def default_run(lis):
                 with ThreadPoolExecutor(max_workers=10) as Executor:
                         with open(lis, 'r') as target:
                                 for s in target:
+                                        print("Attacking Target : "+s)
                                         url = s.rstrip()
                                         Executor.submit(check_cms,url)
         except IOError as e:
@@ -44,25 +45,25 @@ def main():
                 parse.add_argument("--list", help="List website target", required=True)
                 parse.add_argument("--brute", help="WordPress Brute Force")
                 parse.add_argument("--password", help="Costum Password with specific directory")
-                parse.add_argument("--kill", help="Just scan all and try with lucky")
+                parse.add_argument("--all", help="Just scan all and try with lucky")
                 parse.add_argument("--url", help="single target")
                 peler = parse.parse_args()
                 try:
-                        if peler.list:
+                        if peler.list is not None:
                                 if peler.brute:
                                         if peler.password:
                                                 _brute(peler.list,peler.password)
                                         else:
                                                 _brute(peler.list,"default")
-                                elif peler.kill:
+                                elif peler.all == "Y":
                                         default_run(peler.list)
-                        elif peler.url:
+                        elif peler.url is not None:
                                 if peler.brute:
                                         if peler.password:
                                                 _brute(peler.list,peler.password)
                                         else:
                                                 _brute(peler.list,"default")
-                                elif peler.kill:
+                                elif peler.all == "Y":
                                         default_run(peler.list)
                 except IOError as e:
                         print(colored("Error"+e),'red')
