@@ -8,8 +8,7 @@
 from termcolor import colored
 import argparse
 from concurrent.futures import ThreadPoolExecutor
-from __future__ import print_function
-from galer.module import check_cms
+from galer.exploit import check_cms
 from galer.wpbrute import go_brute
 
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0'}
