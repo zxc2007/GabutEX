@@ -43,7 +43,7 @@ def get_domain(url, Remove_http=True):
 
 def get_user_and_replace(url,user,x):
 	try:
-		if x in None:
+		if x is None:
 			return 0
 		if '[DOMAIN]' or '[UPPERUSER]' or '[DEFUSER]' in x:
 			if check_array(x):
